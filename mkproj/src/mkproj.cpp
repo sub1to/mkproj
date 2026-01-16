@@ -274,6 +274,18 @@ static const char* GITIGNORE = R"txt(
 
 
 
+static const char* GITATTRIBUTES = R"txt(
+# Default behavior: auto-detect text, force LF
+* text=auto eol=lf
+
+# Explicitly force C++ files to be text (safeguard)
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.h   text eol=lf
+)txt";
+
+
+
 static const char* EDITORCONFIG = R"txt(
 [*.{c,h,cpp,hpp}]
 indent_style = space
@@ -437,6 +449,7 @@ bool    create_project(const std::string& workspaceName, const std::string& proj
     && create_file(workspaceName + "/clean.sh",         CLEAN_BASH + 1)
     && create_file(workspaceName + "/Makefile",         MAKEFILE + 1)
     && create_file(workspaceName + "/.gitignore",       GITIGNORE + 1)
+    && create_file(workspaceName + "/.gitattributes",   GITATTRIBUTES + 1)
     && create_file(workspaceName + "/.editorconfig",    EDITORCONFIG + 1)
     ;
 

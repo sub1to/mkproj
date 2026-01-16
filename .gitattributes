@@ -1,0 +1,7 @@
+# Default behavior: auto-detect text, force LF
+* text=auto eol=lf
+
+# Explicitly force C++ files to be text (safeguard)
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.h   text eol=lf
