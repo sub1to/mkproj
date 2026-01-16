@@ -290,6 +290,7 @@ static const char* EDITORCONFIG = R"txt(
 [*.{c,h,cpp,hpp}]
 indent_style = space
 indent_size = 4
+end_of_line = lf
 )txt";
 
 
