@@ -320,8 +320,10 @@ void    replace_placeholder(std::string& source, const std::string_view tag, con
 
 bool    create_dir(const std::string_view dir)
 {
+    std::error_code err;
     std::cout << "Creating directory: " << dir << std::endl;
-    return std::filesystem::create_directory(dir);
+    std::filesystem::create_directory(dir, err);
+    return err == std::errc{};
 }
 
 bool    create_file(const std::string_view file, const std::string_view value)
