@@ -292,6 +292,8 @@ bool write_file(const std::filesystem::path& path, const std::string_view data)
 
     ofs << data;
 
+    ofs.flush();
+
     return ofs.good();
 }
 
