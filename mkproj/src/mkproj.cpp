@@ -388,10 +388,18 @@ std::string_view generate_random_uuid(std::span<char> buf)
 
 bool    can_create_project(const std::string& workspaceName)
 {
-    if(std::filesystem::exists(workspaceName)){
+    std::error_code err;
+
+    if(std::filesystem::exists(workspaceName, err)){
         std::cerr << "Directory " << workspaceName << " already exists. aborting." << std::endl;
         return false;
     }
+
+    if(err != std::errc{}){
+        std::cerr << "Error checking if directory " << workspaceName << " exists. aborting." << std::endl;
+        return false;
+    }
+
     return true;
 }
 
